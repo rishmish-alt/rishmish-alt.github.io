@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domain For Sale | WaahModijiWaah</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400&family=Noto+Serif:wght@700&family=EB+Garamond:ital@1&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-orange: #FC6A03;
+            --deep-green: #278D27;
+            --accent-brown: #A52A2A;
+            --text-dark: #333333;
+            --border-thickness: 50px; 
+        }
+
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: var(--primary-orange);
+            font-family: 'Noto Serif', serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        /* --- SEAMLESS BORDER FRAME --- */
+        .page-frame {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none; 
+            box-sizing: border-box;
+            z-index: 5;
+            
+            border: var(--border-thickness) solid transparent;
+            border-image-source: url('border.jpg');
+            border-image-slice: 100; 
+            border-image-repeat: round;
+            mix-blend-mode: multiply;
+        }
+
+        /* --- MAIN CONTENT --- */
+        .container {
+            text-align: center;
+            width: 85%;
+            max-width: 900px;
+            padding: 20px;
+            z-index: 10;
+            box-sizing: border-box;
+        }
+
+        .hindi-text {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 32px;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+            display: inline-block;
+            border-bottom: 1px solid rgba(0,0,0,0.2);
+        }
+
+        .main-headline {
+            color: var(--deep-green);
+            font-size: clamp(34px, 7vw, 64px); 
+            font-weight: 700;
+            margin: 20px 0;
+            line-height: 1.15; /* Spacing between Line 1 and Line 2 */
+        }
+
+        .crossed-out {
+            color: var(--accent-brown);
+            text-decoration: line-through;
+        }
+
+        .sub-text {
+            font-family: 'EB Garamond', serif;
+            font-style: italic;
+            font-size: clamp(18px, 3.5vw, 24px);
+            color: var(--text-dark);
+            margin: 30px 0;
+        }
+
+        .contact-section {
+            font-size: clamp(20px, 4.5vw, 36px);
+            font-weight: 700;
+        }
+
+        .contact-label {
+            color: var(--deep-green);
+        }
+
+        .email-link {
+            color: var(--deep-green);
+            text-decoration: none;
+        }
+
+        .email-link:hover {
+            text-decoration: underline;
+        }
+
+        /* --- MOBILE RESPONSIVE --- */
+        @media (max-width: 600px) {
+            :root {
+                --border-thickness: 25px; 
+            }
+            .main-headline {
+                font-size: 36px;
+            }
+            .hindi-text {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-frame"></div>
+
+    <div class="container">
+        <div class="hindi-text">आपका स्वागत है</div>
+
+        <div class="main-headline">
+            Want to buy<br>
+            this <span class="crossed-out">nation</span> domain?
+        </div>
+
+        <div class="sub-text">
+            Yes, this could be yours. The domain. Not the nation.
+        </div>
+
+        <div class="contact-section">
+            <span class="contact-label">Email to:</span> 
+            <a href="mailto:contact@waahmodijiwaah.com" class="email-link">
+                contact@waahmodijiwaah.com
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
