@@ -9,18 +9,10 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-ZY1JZV1M7S');
     </script>
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-<link rel="shortcut icon" href="/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400&family=Noto+Serif:wght@700&family=EB+Garamond:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -31,15 +23,8 @@
             --border-thickness: 50px;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'DM Serif Display', display serif;
@@ -49,10 +34,8 @@
 
         .page-frame {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
             pointer-events: none;
             z-index: 100;
             border: var(--border-thickness) solid transparent;
@@ -70,20 +53,17 @@
             justify-content: center;
             align-items: flex-start;
             padding-top: 30vh;
-            /* This controls the height; adjust as needed */
             overflow: hidden;
         }
 
         .parallax-bg {
             position: absolute;
-            top: -30%;
-            left: 0;
-            width: 100%;
-            height: 160%;
+            top: -30%; left: 0;
+            width: 100%; height: 160%;
             background-color: var(--primary-orange);
             background-image:
-                radial-gradient(ellipse at 20% 50%, rgba(255, 255, 255, 0.08) 0%, transparent 60%),
-                radial-gradient(ellipse at 80% 20%, rgba(39, 141, 39, 0.12) 0%, transparent 50%);
+                radial-gradient(ellipse at 20% 50%, rgba(255,255,255,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(39,141,39,0.12) 0%, transparent 50%);
             will-change: transform;
             z-index: 0;
         }
@@ -99,11 +79,11 @@
 
         .hindi-text {
             font-family: 'Rozha One', Display-serif;
-            font-size: 20px;
+            font-size: 25px;
             color: var(--text-dark);
             margin-bottom: 5px;
             display: inline-block;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+            border-bottom: 1px solid rgba(0,0,0,0.5);
         }
 
         .main-headline {
@@ -114,43 +94,24 @@
             line-height: 1.15;
         }
 
-        .crossed-out {
-            color: var(--accent-brown);
-            text-decoration: line-through;
-        }
+        .crossed-out { color: var(--accent-brown); text-decoration: line-through; }
 
         .sub-text {
             font-family: 'EB Garamond', serif;
             font-style: italic;
-            font-weight: 600; /* Added to make the front page sub-text bold*/
+            font-weight: 600;
             font-size: clamp(18px, 3.5vw, 24px);
             color: var(--text-dark);
             margin: 30px 0;
         }
 
-        .contact-section {
-            font-size: clamp(20px, 4.5vw, 30px);
-            font-weight: 700;
-        }
-
-        .contact-label {
-            color: var(--deep-green);
-        }
-
-        .email-link {
-            color: var(--deep-green);
-            text-decoration: none;
-        }
-
-        .email-link:hover {
-            text-decoration: underline;
-        }
+        .email-link { color: var(--deep-green); text-decoration: none; }
+        .email-link:hover { text-decoration: underline; }
 
         /* --- SCROLL INDICATOR --- */
         .scroll-indicator {
             position: absolute;
-            bottom: 30px;
-            left: 50%;
+            bottom: 30px; left: 50%;
             transform: translateX(-50%);
             z-index: 10;
             display: flex;
@@ -169,40 +130,59 @@
         }
 
         .scroll-arrow {
-            width: 20px;
-            height: 20px;
+            width: 20px; height: 20px;
             border-right: 2px solid var(--text-dark);
             border-bottom: 2px solid var(--text-dark);
             transform: rotate(45deg);
         }
 
         @keyframes bounce {
-
-            0%,
-            100% {
-                transform: translateX(-50%) translateY(0);
-            }
-
-            50% {
-                transform: translateX(-50%) translateY(8px);
-            }
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50%       { transform: translateX(-50%) translateY(8px); }
         }
 
-        /* --- ANIMATED WAVE TRANSITION --- */
+        /* --- SVG WAVE TRANSITION --- */
+        /*
+         * The transition area sits on top of the orange section background.
+         * The SVG has 7 wave layers sharing one <path> definition, animated
+         * purely via CSS translateX — no JavaScript, no canvas.
+         * Colours interpolate linearly from #FC6A03 (orange) to #278D27 (green)
+         * across 7 steps: each layer is offset by y+2 so they stack vertically,
+         * giving the illusion of depth as faster/slower layers scroll past each other.
+         */
         .wave-transition {
             position: relative;
-            height: 280px;
+            background-color: var(--primary-orange); /* same as section-one */
+            height: 220px;
             overflow: hidden;
-            margin-top: -2px;
-            background: linear-gradient(to bottom, var(--primary-orange), var(--deep-green));
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            margin-bottom: -2px;
         }
 
-        .wave-transition canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .waves {
             width: 100%;
-            height: 100%;
+            height: 180px;
+            display: block;
+        }
+
+        .parallax > use {
+            animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite;
+        }
+
+        /* Each layer gets a distinct speed + delay = parallax depth illusion */
+        .parallax > use:nth-child(1) { animation-delay: -2s;  animation-duration: 7s;  opacity: 0.30; }
+        .parallax > use:nth-child(2) { animation-delay: -3s;  animation-duration: 10s; opacity: 0.50; }
+        .parallax > use:nth-child(3) { animation-delay: -4s;  animation-duration: 13s; opacity: 0.45; }
+        .parallax > use:nth-child(4) { animation-delay: -5s;  animation-duration: 16s; opacity: 0.60; }
+        .parallax > use:nth-child(5) { animation-delay: -6s;  animation-duration: 19s; opacity: 0.75; }
+        .parallax > use:nth-child(6) { animation-delay: -7s;  animation-duration: 22s; opacity: 0.88; }
+        .parallax > use:nth-child(7) { animation-delay: -8s;  animation-duration: 25s; opacity: 1.00; }
+
+        @keyframes move-forever {
+            0%   { transform: translate3d(-90px, 0, 0); }
+            100% { transform: translate3d(85px,  0, 0); }
         }
 
         /* --- SECTION 2 --- */
@@ -214,18 +194,16 @@
             align-items: center;
             overflow: hidden;
             background-color: var(--deep-green);
-            margin-top: -2px;
+            margin-top: -1px;
         }
 
         .section-two-bg {
             position: absolute;
-            top: -30%;
-            left: 0;
-            width: 100%;
-            height: 160%;
+            top: -30%; left: 0;
+            width: 100%; height: 160%;
             background-image:
-                radial-gradient(ellipse at 80% 50%, rgba(252, 106, 3, 0.1) 0%, transparent 60%),
-                radial-gradient(ellipse at 20% 80%, rgba(255, 255, 255, 0.04) 0%, transparent 50%);
+                radial-gradient(ellipse at 80% 50%, rgba(252,106,3,0.1) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 80%, rgba(255,255,255,0.04) 0%, transparent 50%);
             will-change: transform;
             z-index: 0;
         }
@@ -242,18 +220,15 @@
             transition: opacity 0.9s ease, transform 0.9s ease;
         }
 
-        .section-two-content.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .section-two-content.visible { opacity: 1; transform: translateY(0); }
 
         .edu-label {
             font-family: 'Rozha One', display-serif;
             font-size: 20px;
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(255,255,255,0.6);
             margin-bottom: 30px;
             display: inline-block;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+            border-bottom: 1px solid rgba(255,255,255,0.5);
             padding-bottom: 5px;
         }
 
@@ -266,47 +241,28 @@
             margin-bottom: 40px;
         }
 
-        .edu-headline em {
-            color: var(--primary-orange);
-            font-style: italics;
-        }
+        .edu-headline em { color: var(--primary-orange); font-style: italic; }
 
         .edu-sub {
             font-family: 'EB Garamond', serif;
             font-style: italic;
-            font-weight: 600; /* Added to make the second page sub-text bol*/
+            font-weight: 600;
             font-size: clamp(16px, 3vw, 22px);
-            color: rgba(255, 255, 255, 0.75);
+            color: rgba(255,255,255,0.75);
             max-width: 600px;
             margin: 0 auto;
             line-height: 1.7;
         }
 
-        .edu-sub a:hover {
-            color: var(--primary-orange) !important;
-            transition: color 0.3s ease;
-        }
+        .edu-sub a:hover { color: var(--primary-orange) !important; transition: color 0.3s ease; }
 
         @media (max-width: 600px) {
-            :root {
-                --border-thickness: 25px;
-            }
-
-            .main-headline {
-                font-size: 36px;
-            }
-
-            .hindi-text {
-                font-size: 24px;
-            }
-
-            .edu-headline {
-                font-size: 32px;
-            }
-
-            .wave-transition {
-                height: 200px;
-            }
+            :root { --border-thickness: 25px; }
+            .main-headline   { font-size: 36px; }
+            .hindi-text      { font-size: 24px; }
+            .edu-headline    { font-size: 32px; }
+            .wave-transition { height: 160px; }
+            .waves           { height: 130px; }
         }
     </style>
 </head>
@@ -328,8 +284,6 @@
             <div class="sub-text">
                 Yes, this could be yours.<br>The domain, not the nation.
             </div>
-
-        </div>
         </div>
 
         <div class="scroll-indicator">
@@ -338,43 +292,63 @@
         </div>
     </section>
 
-    <!-- ANIMATED WAVE TRANSITION -->
+    <!--
+        SVG WAVE TRANSITION
+        ───────────────────
+        One reusable <path id="gentle-wave"> drawn 7 times via <use>,
+        each shifted down by y+2 units and filled with a colour stop
+        interpolated from orange (#FC6A03) to green (#278D27).
+        Animation is pure CSS translateX at different speeds → parallax depth.
+        No canvas, no requestAnimationFrame.
+    -->
     <div class="wave-transition">
-        <canvas id="waveCanvas"></canvas>
+        <svg class="waves"
+             xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 24 150 28"
+             preserveAspectRatio="none"
+             shape-rendering="auto">
+            <defs>
+                <path id="gentle-wave"
+                      d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+            </defs>
+            <g class="parallax">
+                <!-- 7 colour stops: orange → green, y offset increases by 2 each step -->
+                <use href="#gentle-wave" x="48" y="0"  fill="#CE720B" />
+                <use href="#gentle-wave" x="48" y="2"  fill="#B07610" />
+                <use href="#gentle-wave" x="48" y="4"  fill="#927C15" />
+                <use href="#gentle-wave" x="48" y="6"  fill="#73801A" />
+                <use href="#gentle-wave" x="48" y="8"  fill="#55861F" />
+                <use href="#gentle-wave" x="48" y="10" fill="#368A24" />
+                <use href="#gentle-wave" x="48" y="12" fill="#278D27" />
+            </g>
+        </svg>
     </div>
 
     <!-- SECTION 2 -->
     <section class="section-two">
         <div class="section-two-bg" id="parallax-bg-2"></div>
 
-
         <div class="section-two-content" id="section-two-content">
-
-            <br>
-            <br><br>
-            <br>
-            <br>
-            <br>
-            <br>
+            <br><br><br><br><br><br><br>
             <div class="edu-label">एक कारण और भी है</div>
             <div class="edu-headline">
                 Something's coming up<br><em>soon!</em>
             </div>
             <div class="edu-sub">
-                <br>
-                <br>
-                <br>
-                <br>
+                <br><br><br><br>
                 Meanwhile, you can buy this domain and fund my education!
-
             </div>
             <div class="edu-sub" style="margin-top: 0;">
-                Email to: <a href="mailto:contact@waahmodijiwaah.com" style="color: rgba(255,255,255,0.75); text-decoration: none;">contact@waahmodijiwaah.com</a>
+                Email to: <a href="mailto:contact@waahmodijiwaah.com"
+                             style="color: rgba(255,255,255,0.75); text-decoration: none;">
+                    contact@waahmodijiwaah.com
+                </a>
             </div>
+        </div>
     </section>
 
     <script>
-        // --- Parallax ---
+        // --- Parallax backgrounds ---
         const bg1 = document.getElementById('parallax-bg-1');
         const bg2 = document.getElementById('parallax-bg-2');
 
@@ -382,150 +356,17 @@
             const scrollY = window.scrollY;
             bg1.style.transform = `translateY(${scrollY * 0.4}px)`;
             bg2.style.transform = `translateY(${scrollY * 0.2}px)`;
-        }, {
-            passive: true
-        });
+        }, { passive: true });
 
-        // --- Fade in section 2 ---
-        const content = document.getElementById('section-two-content');
+        // --- Fade-in section 2 on scroll into view ---
+        const content  = document.getElementById('section-two-content');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) content.classList.add('visible');
             });
-        }, {
-            threshold: 0.2
-        });
+        }, { threshold: 0.2 });
         observer.observe(content);
-
-        // --- Animated Waves ---
-        const canvas = document.getElementById('waveCanvas');
-        const ctx = canvas.getContext('2d');
-
-        function resize() {
-            canvas.width = canvas.offsetWidth;
-            canvas.height = canvas.offsetHeight;
-        }
-        resize();
-        window.addEventListener('resize', resize);
-
-        const orange = {
-            r: 252,
-            g: 106,
-            b: 3
-        };
-        const green = {
-            r: 39,
-            g: 141,
-            b: 39
-        };
-
-        function mixColor(t) {
-            const r = Math.round(orange.r + (green.r - orange.r) * t);
-            const g = Math.round(orange.g + (green.g - orange.g) * t);
-            const b = Math.round(orange.b + (green.b - orange.b) * t);
-            return `${r},${g},${b}`;
-        }
-
-        // 4 waves: 2 orange from top, 2 green from bottom
-        // Each wave has its OWN top/bottom edge wave so no straight lines anywhere
-        const waves = [
-            // TOP SECTION (Orange dominant)
-            { side: 'top', amplitude: 22, frequency: 0.0045, speed: 0.018, offset: 0, yBase: 0.10, opacity: 1.0, colorMix: 0.00, edgeAmplitude: 14, edgeFrequency: 0.006, edgeSpeed: 0.014, edgeOffset: 1.0 },
-            { side: 'top', amplitude: 20, frequency: 0.0050, speed: 0.016, offset: 1.2, yBase: 0.18, opacity: 0.7, colorMix: 0.10, edgeAmplitude: 12, edgeFrequency: 0.007, edgeSpeed: 0.012, edgeOffset: 2.1 },
-            { side: 'top', amplitude: 18, frequency: 0.0055, speed: 0.014, offset: 2.4, yBase: 0.26, opacity: 0.5, colorMix: 0.20, edgeAmplitude: 10, edgeFrequency: 0.008, edgeSpeed: 0.010, edgeOffset: 3.2 },
-            { side: 'top', amplitude: 16, frequency: 0.0060, speed: 0.012, offset: 3.6, yBase: 0.34, opacity: 0.4, colorMix: 0.30, edgeAmplitude: 9, edgeFrequency: 0.009, edgeSpeed: 0.008, edgeOffset: 0.5 },
-            { side: 'top', amplitude: 18, frequency: 0.0055, speed: 0.015, offset: 4.8, yBase: 0.42, opacity: 0.3, colorMix: 0.40, edgeAmplitude: 11, edgeFrequency: 0.007, edgeSpeed: 0.013, edgeOffset: 1.5 },
-            { side: 'top', amplitude: 20, frequency: 0.0050, speed: 0.017, offset: 0.6, yBase: 0.48, opacity: 0.2, colorMix: 0.50, edgeAmplitude: 13, edgeFrequency: 0.006, edgeSpeed: 0.015, edgeOffset: 2.5 },
-
-            // BOTTOM SECTION (Green dominant)
-            { side: 'bottom', amplitude: 20, frequency: 0.0050, speed: 0.016, offset: 1.8, yBase: 0.52, opacity: 0.2, colorMix: 0.55, edgeAmplitude: 13, edgeFrequency: 0.006, edgeSpeed: 0.014, edgeOffset: 3.5 },
-            { side: 'bottom', amplitude: 18, frequency: 0.0055, speed: 0.014, offset: 3.0, yBase: 0.58, opacity: 0.3, colorMix: 0.60, edgeAmplitude: 11, edgeFrequency: 0.007, edgeSpeed: 0.012, edgeOffset: 0.8 },
-            { side: 'bottom', amplitude: 16, frequency: 0.0060, speed: 0.012, offset: 4.2, yBase: 0.66, opacity: 0.4, colorMix: 0.70, edgeAmplitude: 9, edgeFrequency: 0.009, edgeSpeed: 0.010, edgeOffset: 1.8 },
-            { side: 'bottom', amplitude: 18, frequency: 0.0055, speed: 0.015, offset: 5.4, yBase: 0.74, opacity: 0.5, colorMix: 0.80, edgeAmplitude: 10, edgeFrequency: 0.008, edgeSpeed: 0.011, edgeOffset: 2.8 },
-            { side: 'bottom', amplitude: 20, frequency: 0.0050, speed: 0.017, offset: 0.2, yBase: 0.82, opacity: 0.7, colorMix: 0.90, edgeAmplitude: 12, edgeFrequency: 0.007, edgeSpeed: 0.013, edgeOffset: 3.8 },
-            { side: 'bottom', amplitude: 22, frequency: 0.0045, speed: 0.019, offset: 1.4, yBase: 0.90, opacity: 1.0, colorMix: 1.00, edgeAmplitude: 14, edgeFrequency: 0.006, edgeSpeed: 0.015, edgeOffset: 0.1 }
-        ];
-
-        let time = 0;
-
-        function draw() {
-            const W = canvas.width;
-            const H = canvas.height;
-
-            ctx.clearRect(0, 0, W, H);
-
-            // Background gradient
-            const grad = ctx.createLinearGradient(0, 0, 0, H);
-            grad.addColorStop(0, `rgb(${mixColor(0)})`);
-            grad.addColorStop(1, `rgb(${mixColor(1)})`);
-            ctx.fillStyle = grad;
-            ctx.fillRect(0, 0, W, H);
-
-            waves.forEach(wave => {
-                const yBase = wave.yBase * H;
-                const rgb = mixColor(wave.colorMix);
-
-                ctx.beginPath();
-
-                if (wave.side === 'top') {
-                    // Start from top-left with a wavy top edge
-                    // Top edge: y oscillates near 0
-                    const topY0 = Math.sin(wave.edgeOffset + time * wave.edgeSpeed) * wave.edgeAmplitude;
-                    ctx.moveTo(0, topY0);
-
-                    // Draw wavy top edge left → right
-                    for (let x = 1; x <= W; x++) {
-                        const y = Math.sin(wave.edgeFrequency * x + wave.edgeOffset + time * wave.edgeSpeed) * wave.edgeAmplitude;
-                        ctx.lineTo(x, y);
-                    }
-
-                    // Right side: go down to the main wave bottom-right point
-                    const rightBottomY = yBase + Math.sin(wave.frequency * W + wave.offset + time * wave.speed) * wave.amplitude;
-                    ctx.lineTo(W, rightBottomY);
-
-                    // Draw main wave right → left along bottom
-                    for (let x = W - 1; x >= 0; x--) {
-                        const y = yBase + Math.sin(wave.frequency * x + wave.offset + time * wave.speed) * wave.amplitude;
-                        ctx.lineTo(x, y);
-                    }
-
-                    ctx.closePath();
-
-                } else {
-                    // Bottom waves: wavy bottom edge near H
-                    const botY0 = H + Math.sin(wave.edgeOffset + time * wave.edgeSpeed) * wave.edgeAmplitude;
-                    ctx.moveTo(0, botY0);
-
-                    // Draw main wave left → right (upper boundary)
-                    for (let x = 0; x <= W; x++) {
-                        const y = yBase + Math.sin(wave.frequency * x + wave.offset + time * wave.speed) * wave.amplitude;
-                        ctx.lineTo(x, y);
-                    }
-
-                    // Right side: go down to wavy bottom edge
-                    const botYW = H + Math.sin(wave.edgeFrequency * W + wave.edgeOffset + time * wave.edgeSpeed) * wave.edgeAmplitude;
-                    ctx.lineTo(W, botYW);
-
-                    // Draw wavy bottom edge right → left
-                    for (let x = W - 1; x >= 0; x--) {
-                        const y = H + Math.sin(wave.edgeFrequency * x + wave.edgeOffset + time * wave.edgeSpeed) * wave.edgeAmplitude;
-                        ctx.lineTo(x, y);
-                    }
-
-                    ctx.closePath();
-                }
-
-                ctx.fillStyle = `rgba(${rgb}, ${wave.opacity})`;
-                ctx.fill();
-            });
-
-            time++;
-            requestAnimationFrame(draw);
-        }
-
-        draw();
     </script>
 
 </body>
-
 </html>
