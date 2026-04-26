@@ -19,65 +19,77 @@
             --deep-green: #278D27;
             --accent-brown: #A52A2A;
             --text-dark: #333333;
-            --border-thickness: 50px; 
+            --border-thickness: 50px;
         }
 
-        body, html {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            background-color: var(--primary-orange);
-            font-family: 'Noto Serif', serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            box-sizing: border-box;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Serif Display', display serif;
+            overflow-x: hidden;
+            background: var(--primary-orange);
         }
 
-        /* --- SEAMLESS BORDER FRAME --- */
         .page-frame {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            pointer-events: none; 
-            box-sizing: border-box;
-            z-index: 5;
-            
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            pointer-events: none;
+            z-index: 100;
             border: var(--border-thickness) solid transparent;
             border-image-source: url('border.jpg');
-            border-image-slice: 100; 
+            border-image-slice: 100;
             border-image-repeat: round;
             mix-blend-mode: multiply;
         }
 
-        /* --- MAIN CONTENT --- */
+        /* --- SECTION 1 --- */
+        .section-one {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .parallax-bg {
+            position: absolute;
+            top: -30%; left: 0;
+            width: 100%; height: 160%;
+            background-color: var(--primary-orange);
+            background-image:
+                radial-gradient(ellipse at 20% 50%, rgba(255,255,255,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(39,141,39,0.12) 0%, transparent 50%);
+            will-change: transform;
+            z-index: 0;
+        }
+
         .container {
             text-align: center;
             width: 85%;
             max-width: 900px;
             padding: 20px;
             z-index: 10;
-            box-sizing: border-box;
+            position: relative;
         }
 
         .hindi-text {
-            font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 32px;
+            font-family: 'Rozha One', Display-serif;
+            font-size: 25px;
             color: var(--text-dark);
             margin-bottom: 5px;
             display: inline-block;
-            border-bottom: 1px solid rgba(0,0,0,0.2);
+            border-bottom: 1px solid rgba(0,0,0,0.5);
         }
 
         .main-headline {
             color: var(--deep-green);
-            font-size: clamp(34px, 7vw, 64px); 
+            font-size: clamp(34px, 7vw, 64px);
             font-weight: 700;
             margin: 20px 0;
-            line-height: 1.15; /* Spacing between Line 1 and Line 2 */
+            line-height: 1.15;
         }
 
         .crossed-out {
@@ -94,34 +106,148 @@
         }
 
         .contact-section {
-            font-size: clamp(20px, 4.5vw, 36px);
+            font-size: clamp(20px, 4.5vw, 30px);
             font-weight: 700;
         }
 
-        .contact-label {
-            color: var(--deep-green);
-        }
+        .contact-label { color: var(--deep-green); }
 
         .email-link {
             color: var(--deep-green);
             text-decoration: none;
         }
+        .email-link:hover { text-decoration: underline; }
 
-        .email-link:hover {
-            text-decoration: underline;
+        /* --- SCROLL INDICATOR --- */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            opacity: 0.6;
+            animation: bounce 2s infinite;
         }
 
-        /* --- MOBILE RESPONSIVE --- */
+        .scroll-indicator span {
+            font-family: 'EB Garamond', serif;
+            font-style: italic;
+            font-size: 14px;
+            color: var(--text-dark);
+        }
+
+        .scroll-arrow {
+            width: 20px; height: 20px;
+            border-right: 2px solid var(--text-dark);
+            border-bottom: 2px solid var(--text-dark);
+            transform: rotate(45deg);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50%       { transform: translateX(-50%) translateY(8px); }
+        }
+
+        /* --- ANIMATED WAVE TRANSITION --- */
+        .wave-transition {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+            margin-top: -2px;
+            background: linear-gradient(to bottom, var(--primary-orange), var(--deep-green));
+        }
+
+        .wave-transition canvas {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* --- SECTION 2 --- */
+        .section-two {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background-color: var(--deep-green);
+            margin-top: -2px;
+        }
+
+        .section-two-bg {
+            position: absolute;
+            top: -30%; left: 0;
+            width: 100%; height: 160%;
+            background-image:
+                radial-gradient(ellipse at 80% 50%, rgba(252,106,3,0.1) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 80%, rgba(255,255,255,0.04) 0%, transparent 50%);
+            will-change: transform;
+            z-index: 0;
+        }
+
+        .section-two-content {
+            text-align: center;
+            width: 85%;
+            max-width: 900px;
+            padding: 20px;
+            z-index: 10;
+            position: relative;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.9s ease, transform 0.9s ease;
+        }
+
+        .section-two-content.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .edu-label {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 20px;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 30px;
+            display: inline-block;
+            border-bottom: 1px solid rgba(255,255,255,0.5);
+            padding-bottom: 5px;
+        }
+
+        .edu-headline {
+            font-family: 'EB Garamond', serif;
+            font-style: italic;
+            font-size: clamp(28px, 6vw, 72px);
+            color: #ffffff;
+            line-height: 1.2;
+            margin-bottom: 40px;
+        }
+
+        .edu-headline em {
+            color: var(--primary-orange);
+            font-style: normal;
+        }
+
+        .edu-sub {
+            font-family: 'EB Garamond', serif;
+            font-style: italic;
+            font-size: clamp(16px, 3vw, 22px);
+            color: rgba(255,255,255,0.75);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
         @media (max-width: 600px) {
-            :root {
-                --border-thickness: 25px; 
-            }
-            .main-headline {
-                font-size: 36px;
-            }
-            .hindi-text {
-                font-size: 24px;
-            }
+            :root { --border-thickness: 25px; }
+            .main-headline { font-size: 36px; }
+            .hindi-text { font-size: 24px; }
+            .edu-headline { font-size: 32px; }
+            .wave-transition { height: 200px; }
         }
     </style>
 </head>
@@ -129,25 +255,247 @@
 
     <div class="page-frame"></div>
 
-    <div class="container">
-        <div class="hindi-text">आपका स्वागत है</div>
+    <!-- SECTION 1 -->
+    <section class="section-one">
+        <div class="parallax-bg" id="parallax-bg-1"></div>
 
-        <div class="main-headline">
-            Want to buy<br>
-            this <span class="crossed-out">nation</span> domain?
+        <div class="container">
+            <div class="hindi-text">आपका स्वागत है</div>
+            <div class="main-headline">
+                Want to buy<br>
+                this <span class="crossed-out">nation</span> domain?
+            </div>
+            <div class="sub-text">
+                Yes, this could be yours. The domain, not the nation.
+            </div>
+            <div class="contact-section">
+                <span class="contact-label">Email to:</span>
+                <a href="mailto:contact@waahmodijiwaah.com" class="email-link">
+                    contact@waahmodijiwaah.com
+                </a>
+            </div>
         </div>
 
-        <div class="sub-text">
-            Yes, this could be yours. The domain, not the nation.
+        <div class="scroll-indicator">
+            <span>scroll</span>
+            <div class="scroll-arrow"></div>
         </div>
+    </section>
 
-        <div class="contact-section">
-            <span class="contact-label">Email to:</span> 
-            <a href="mailto:contact@waahmodijiwaah.com" class="email-link">
-                contact@waahmodijiwaah.com
-            </a>
-        </div>
+    <!-- ANIMATED WAVE TRANSITION -->
+    <div class="wave-transition">
+        <canvas id="waveCanvas"></canvas>
     </div>
+
+    <!-- SECTION 2 -->
+    <section class="section-two">
+        <div class="section-two-bg" id="parallax-bg-2"></div>
+
+
+        <div class="section-two-content" id="section-two-content">
+
+<br>
+<br><br>
+<br>
+<br>
+<br>
+<br>
+            <div class="edu-label">एक कारण और भी है</div>
+            <div class="edu-headline">
+                Something coming up<br><em>soon!</em>
+            </div>
+            <div class="edu-sub">
+<br>
+<br>
+<br>
+<br>
+                Meanwhile, you can buy this domain and fund my education!
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // --- Parallax ---
+        const bg1 = document.getElementById('parallax-bg-1');
+        const bg2 = document.getElementById('parallax-bg-2');
+
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            bg1.style.transform = `translateY(${scrollY * 0.4}px)`;
+            bg2.style.transform = `translateY(${scrollY * 0.2}px)`;
+        }, { passive: true });
+
+        // --- Fade in section 2 ---
+        const content = document.getElementById('section-two-content');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) content.classList.add('visible');
+            });
+        }, { threshold: 0.2 });
+        observer.observe(content);
+
+        // --- Animated Waves ---
+        const canvas = document.getElementById('waveCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function resize() {
+            canvas.width  = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+        }
+        resize();
+        window.addEventListener('resize', resize);
+
+        const orange = { r: 252, g: 106, b: 3 };
+        const green  = { r: 39,  g: 141, b: 39 };
+
+        function mixColor(t) {
+            const r = Math.round(orange.r + (green.r - orange.r) * t);
+            const g = Math.round(orange.g + (green.g - orange.g) * t);
+            const b = Math.round(orange.b + (green.b - orange.b) * t);
+            return `${r},${g},${b}`;
+        }
+
+        // 4 waves: 2 orange from top, 2 green from bottom
+        // Each wave has its OWN top/bottom edge wave so no straight lines anywhere
+        const waves = [
+            {
+                side: 'top',
+                amplitude: 22,
+                frequency: 0.0045,
+                speed: 0.018,
+                offset: 0,
+                yBase: 0.30,
+                opacity: 1.0,
+                colorMix: 0.0,
+                // edge wave (the top boundary of canvas area covered)
+                edgeAmplitude: 14,
+                edgeFrequency: 0.006,
+                edgeSpeed: 0.014,
+                edgeOffset: 1.0
+            },
+            {
+                side: 'top',
+                amplitude: 18,
+                frequency: 0.0055,
+                speed: 0.013,
+                offset: 2.5,
+                yBase: 0.45,
+                opacity: 0.78,
+                colorMix: 0.2,
+                edgeAmplitude: 12,
+                edgeFrequency: 0.007,
+                edgeSpeed: 0.010,
+                edgeOffset: 3.2
+            },
+            {
+                side: 'bottom',
+                amplitude: 18,
+                frequency: 0.0055,
+                speed: 0.016,
+                offset: 1.2,
+                yBase: 0.55,
+                opacity: 0.78,
+                colorMix: 0.8,
+                edgeAmplitude: 12,
+                edgeFrequency: 0.007,
+                edgeSpeed: 0.012,
+                edgeOffset: 2.1
+            },
+            {
+                side: 'bottom',
+                amplitude: 22,
+                frequency: 0.0045,
+                speed: 0.011,
+                offset: 3.8,
+                yBase: 0.70,
+                opacity: 1.0,
+                colorMix: 1.0,
+                edgeAmplitude: 14,
+                edgeFrequency: 0.006,
+                edgeSpeed: 0.009,
+                edgeOffset: 0.5
+            }
+        ];
+
+        let time = 0;
+
+        function draw() {
+            const W = canvas.width;
+            const H = canvas.height;
+
+            ctx.clearRect(0, 0, W, H);
+
+            // Background gradient
+            const grad = ctx.createLinearGradient(0, 0, 0, H);
+            grad.addColorStop(0, `rgb(${mixColor(0)})`);
+            grad.addColorStop(1, `rgb(${mixColor(1)})`);
+            ctx.fillStyle = grad;
+            ctx.fillRect(0, 0, W, H);
+
+            waves.forEach(wave => {
+                const yBase = wave.yBase * H;
+                const rgb = mixColor(wave.colorMix);
+
+                ctx.beginPath();
+
+                if (wave.side === 'top') {
+                    // Start from top-left with a wavy top edge
+                    // Top edge: y oscillates near 0
+                    const topY0 = Math.sin(wave.edgeOffset + time * wave.edgeSpeed) * wave.edgeAmplitude;
+                    ctx.moveTo(0, topY0);
+
+                    // Draw wavy top edge left → right
+                    for (let x = 1; x <= W; x++) {
+                        const y = Math.sin(wave.edgeFrequency * x + wave.edgeOffset + time * wave.edgeSpeed) * wave.edgeAmplitude;
+                        ctx.lineTo(x, y);
+                    }
+
+                    // Right side: go down to the main wave bottom-right point
+                    const rightBottomY = yBase + Math.sin(wave.frequency * W + wave.offset + time * wave.speed) * wave.amplitude;
+                    ctx.lineTo(W, rightBottomY);
+
+                    // Draw main wave right → left along bottom
+                    for (let x = W - 1; x >= 0; x--) {
+                        const y = yBase + Math.sin(wave.frequency * x + wave.offset + time * wave.speed) * wave.amplitude;
+                        ctx.lineTo(x, y);
+                    }
+
+                    ctx.closePath();
+
+                } else {
+                    // Bottom waves: wavy bottom edge near H
+                    const botY0 = H + Math.sin(wave.edgeOffset + time * wave.edgeSpeed) * wave.edgeAmplitude;
+                    ctx.moveTo(0, botY0);
+
+                    // Draw main wave left → right (upper boundary)
+                    for (let x = 0; x <= W; x++) {
+                        const y = yBase + Math.sin(wave.frequency * x + wave.offset + time * wave.speed) * wave.amplitude;
+                        ctx.lineTo(x, y);
+                    }
+
+                    // Right side: go down to wavy bottom edge
+                    const botYW = H + Math.sin(wave.edgeFrequency * W + wave.edgeOffset + time * wave.edgeSpeed) * wave.edgeAmplitude;
+                    ctx.lineTo(W, botYW);
+
+                    // Draw wavy bottom edge right → left
+                    for (let x = W - 1; x >= 0; x--) {
+                        const y = H + Math.sin(wave.edgeFrequency * x + wave.edgeOffset + time * wave.edgeSpeed) * wave.edgeAmplitude;
+                        ctx.lineTo(x, y);
+                    }
+
+                    ctx.closePath();
+                }
+
+                ctx.fillStyle = `rgba(${rgb}, ${wave.opacity})`;
+                ctx.fill();
+            });
+
+            time++;
+            requestAnimationFrame(draw);
+        }
+
+        draw();
+    </script>
 
 </body>
 </html>
