@@ -428,63 +428,22 @@
 
         // 4 waves: 2 orange from top, 2 green from bottom
         // Each wave has its OWN top/bottom edge wave so no straight lines anywhere
-        const waves = [{
-                side: 'top',
-                amplitude: 22,
-                frequency: 0.0045,
-                speed: 0.018,
-                offset: 0,
-                yBase: 0.35,
-                opacity: 1.0,
-                colorMix: 0.0,
-                // edge wave (the top boundary of canvas area covered)
-                edgeAmplitude: 14,
-                edgeFrequency: 0.006,
-                edgeSpeed: 0.014,
-                edgeOffset: 1.0
-            },
-            {
-                side: 'top',
-                amplitude: 18,
-                frequency: 0.0055,
-                speed: 0.013,
-                offset: 2.5,
-                yBase: 0.55,
-                opacity: 0.78,
-                colorMix: 0.2,
-                edgeAmplitude: 12,
-                edgeFrequency: 0.007,
-                edgeSpeed: 0.010,
-                edgeOffset: 3.2
-            },
-            {
-                side: 'bottom',
-                amplitude: 18,
-                frequency: 0.0055,
-                speed: 0.016,
-                offset: 1.2,
-                yBase: 0.45,
-                opacity: 0.78,
-                colorMix: 0.8,
-                edgeAmplitude: 12,
-                edgeFrequency: 0.007,
-                edgeSpeed: 0.012,
-                edgeOffset: 2.1
-            },
-            {
-                side: 'bottom',
-                amplitude: 22,
-                frequency: 0.0045,
-                speed: 0.011,
-                offset: 3.8,
-                yBase: 0.65,
-                opacity: 1.0,
-                colorMix: 1.0,
-                edgeAmplitude: 14,
-                edgeFrequency: 0.006,
-                edgeSpeed: 0.009,
-                edgeOffset: 0.5
-            }
+        const waves = [
+            // TOP SECTION (Orange dominant)
+            { side: 'top', amplitude: 22, frequency: 0.0045, speed: 0.018, offset: 0, yBase: 0.10, opacity: 1.0, colorMix: 0.00, edgeAmplitude: 14, edgeFrequency: 0.006, edgeSpeed: 0.014, edgeOffset: 1.0 },
+            { side: 'top', amplitude: 20, frequency: 0.0050, speed: 0.016, offset: 1.2, yBase: 0.18, opacity: 0.7, colorMix: 0.10, edgeAmplitude: 12, edgeFrequency: 0.007, edgeSpeed: 0.012, edgeOffset: 2.1 },
+            { side: 'top', amplitude: 18, frequency: 0.0055, speed: 0.014, offset: 2.4, yBase: 0.26, opacity: 0.5, colorMix: 0.20, edgeAmplitude: 10, edgeFrequency: 0.008, edgeSpeed: 0.010, edgeOffset: 3.2 },
+            { side: 'top', amplitude: 16, frequency: 0.0060, speed: 0.012, offset: 3.6, yBase: 0.34, opacity: 0.4, colorMix: 0.30, edgeAmplitude: 9, edgeFrequency: 0.009, edgeSpeed: 0.008, edgeOffset: 0.5 },
+            { side: 'top', amplitude: 18, frequency: 0.0055, speed: 0.015, offset: 4.8, yBase: 0.42, opacity: 0.3, colorMix: 0.40, edgeAmplitude: 11, edgeFrequency: 0.007, edgeSpeed: 0.013, edgeOffset: 1.5 },
+            { side: 'top', amplitude: 20, frequency: 0.0050, speed: 0.017, offset: 0.6, yBase: 0.48, opacity: 0.2, colorMix: 0.50, edgeAmplitude: 13, edgeFrequency: 0.006, edgeSpeed: 0.015, edgeOffset: 2.5 },
+
+            // BOTTOM SECTION (Green dominant)
+            { side: 'bottom', amplitude: 20, frequency: 0.0050, speed: 0.016, offset: 1.8, yBase: 0.52, opacity: 0.2, colorMix: 0.55, edgeAmplitude: 13, edgeFrequency: 0.006, edgeSpeed: 0.014, edgeOffset: 3.5 },
+            { side: 'bottom', amplitude: 18, frequency: 0.0055, speed: 0.014, offset: 3.0, yBase: 0.58, opacity: 0.3, colorMix: 0.60, edgeAmplitude: 11, edgeFrequency: 0.007, edgeSpeed: 0.012, edgeOffset: 0.8 },
+            { side: 'bottom', amplitude: 16, frequency: 0.0060, speed: 0.012, offset: 4.2, yBase: 0.66, opacity: 0.4, colorMix: 0.70, edgeAmplitude: 9, edgeFrequency: 0.009, edgeSpeed: 0.010, edgeOffset: 1.8 },
+            { side: 'bottom', amplitude: 18, frequency: 0.0055, speed: 0.015, offset: 5.4, yBase: 0.74, opacity: 0.5, colorMix: 0.80, edgeAmplitude: 10, edgeFrequency: 0.008, edgeSpeed: 0.011, edgeOffset: 2.8 },
+            { side: 'bottom', amplitude: 20, frequency: 0.0050, speed: 0.017, offset: 0.2, yBase: 0.82, opacity: 0.7, colorMix: 0.90, edgeAmplitude: 12, edgeFrequency: 0.007, edgeSpeed: 0.013, edgeOffset: 3.8 },
+            { side: 'bottom', amplitude: 22, frequency: 0.0045, speed: 0.019, offset: 1.4, yBase: 0.90, opacity: 1.0, colorMix: 1.00, edgeAmplitude: 14, edgeFrequency: 0.006, edgeSpeed: 0.015, edgeOffset: 0.1 }
         ];
 
         let time = 0;
