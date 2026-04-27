@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="ID_BROWSER_TITLE">WaahModijiWaah | Crowdsourced Database</title>
+    <title id="ID_TITLE_TAG">WaahModijiWaah | Crowdsourced Database</title>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZY1JZV1M7S"></script>
     <script>
@@ -20,14 +20,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;700&amp;family=Lora:ital,wght@0,400;0,700;1,400;1,600&amp;display=swap" rel="stylesheet">
 
     <style>
-        /* --- [ID: ROOT_THEME_VARIABLES] --- */
+        /* --- [ID: ROOT_THEME_GLASS] Global Colors and Transparency --- */
         :root {
             --primary-orange: #FC6A03;
             --deep-green: #278D27;
             --bg-black: #111111;
-            --dropdown-bg: #FFFFFF;
+            /* [ID: DROPDOWN_GLASS_VAR] Transparent glass variable */
+            --dropdown-bg: rgba(255, 255, 255, 0.7);
             --dropdown-text: #333333;
-            --dropdown-hover: #F5F5F5;
+            --dropdown-hover: rgba(255, 255, 255, 0.4);
         }
 
         * {
@@ -45,7 +46,7 @@
             overflow-x: hidden;
         }
 
-        /* --- [ID: HERO_SECTION_STYLING] --- */
+        /* --- [ID: HERO_SECTION_STYLING] Restored floating and underline --- */
         .section-one {
             height: calc(100vh - 200px);
             display: flex;
@@ -108,7 +109,7 @@
             }
         }
 
-        /* --- [ID: PARALLAX_WAVE_STYLING] --- */
+        /* --- [ID: WAVE_TRANSITION_STYLING] --- */
         .transition-area {
             position: relative;
             background-color: var(--primary-orange);
@@ -140,7 +141,7 @@
             }
         }
 
-        /* --- [ID: DATE_DROPDOWN_FORMATTING] --- */
+        /* --- [ID: COMPACT_GLASS_DROPDOWN] Transparent blur menu --- */
         .section-two {
             background-color: var(--deep-green);
             padding: 40px 20px;
@@ -161,25 +162,21 @@
         .jump-date-trigger {
             position: relative;
             width: 100%;
-            max-width: 180px;
+            max-width: 220px;
             margin-bottom: 40px;
             z-index: 100;
         }
 
         .dropdown-base {
-            font-family: 'Lora', serif;
-            font-size: 17px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 12px 20px;
             background: var(--deep-green);
             border: 2px solid white;
-            border-radius: 12px;
+            border-radius: 50px;
             color: white;
             cursor: pointer;
-            height:50px;
-            width: 150px;
             transition: 0.3s;
         }
 
@@ -192,24 +189,17 @@
             display: none;
             position: absolute;
             top: 105%;
-            left: 42%;
+            left: 50%;
             transform: translateX(-50%);
-            width: 150px;
-
-            /* Transparent background */
-            background: rgba(255, 255, 255, 0.7);
-
-            /* Adds a blur to the content behind the dropdown */
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-
+            width: 220px;
+            background: var(--dropdown-bg);
             border-radius: 8px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
             list-style: none;
             overflow: hidden;
-
-            /* Subtle border to define the shape */
             border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
         .jump-date-trigger.active .dropdown-menu {
@@ -218,40 +208,38 @@
 
         .dropdown-header {
             padding: 8px 15px;
-            /* Reduced padding from 12px/20px */
             font-size: 0.75rem;
-            /* Smaller font */
-            color: #aaa;
+            color: #555;
             text-transform: uppercase;
-            /* Added for a clean, label look */
             letter-spacing: 1px;
-            border-bottom: 1px solid #f0f0f0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            text-align: left;
         }
 
         .dropdown-item {
             padding: 10px 15px;
-            /* Reduced vertical padding for compactness */
             color: var(--dropdown-text);
-            font-size: 0.9rem;
-            /* Slightly smaller text for the "compact" feel */
-            font-weight: 500;
-            /* Medium weight for better readability */
             cursor: pointer;
+            display: flex;
+            align-items: center;
             transition: 0.2s;
-            border-bottom: 1px solid #f9f9f9;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            font-size: 0.9rem;
+            font-weight: 500;
         }
 
         .dropdown-item:hover {
-            background: rgba(255, 255, 255, 0.4);
+            background: var(--dropdown-hover);
         }
 
         .dropdown-item.special {
             background-color: rgba(250, 250, 250, 0.5);
+            font-weight: 700;
+            color: var(--deep-green);
             border-top: 1px solid rgba(0, 0, 0, 0.1);
         }
-        }
 
-        /* --- [ID: DATABASE_CARD_GRID_STYLING] --- */
+        /* --- [ID: GHOST_OVERLAY_CARD_STYLING] --- */
         .news-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -261,10 +249,12 @@
         }
 
         .card {
-            background: white;
-            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 8px;
             padding: 25px;
-            border-top: 5px solid var(--primary-orange);
+            border: 2px solid var(--primary-orange);
             position: relative;
             min-height: 350px;
             display: flex;
@@ -276,15 +266,25 @@
         .card:hover {
             transform: translateY(-8px);
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+            background: rgba(255, 255, 255, 0.85);
         }
 
+        /* [ID: GHOST_DATE_PLACEMENT] Controls Color, Font, and Alignment */
         .card-date {
+            /* COLOR: Currently a subtle transparent black */
+            color: rgba(0, 0, 0, 0.3);
+
+            /* FONT SIZE & WEIGHT */
             font-size: 0.75rem;
-            color: #999;
+            font-weight: 600;
+
+            /* ALIGNMENT: Relative to the card's bottom-left */
             position: absolute;
-            top: 15px;
-            right: 15px;
-            font-weight: 700;
+            bottom: 15px;
+            left: 38px;
+
+            /* Optional: If you want to change the font family specifically for the date */
+            font-family: 'Lora', sans-serif;
         }
 
         .card h3 {
@@ -309,7 +309,7 @@
             margin-top: 10px;
         }
 
-        /* --- [ID: FOOTER_LAYOUT_STYLING] --- */
+        /* --- [ID: FOOTER_ACTION_STYLING] --- */
         .section-three {
             background: var(--bg-black);
             display: flex;
@@ -373,11 +373,11 @@
     <section class="section-one">
         <div class="top-spacer"></div>
         <div class="main-hero-content">
-            <div class="hindi-welcome" id="ID_TEXT_WELCOME">भाइयों और बहनों</div>
-            <h1 id="ID_TEXT_HERO_TITLE">Waah Modiji Waah</h1>
-            <p class="main-desc" id="ID_TEXT_HERO_DESC">Crowdsourced archive of verified "WMW" Stories.</p>
+            <div class="hindi-welcome" id="ID_TXT_WELCOME">भाइयों और बहनों</div>
+            <h1 id="ID_TXT_HERO_TITLE">Waah Modiji Waah</h1>
+            <p class="main-desc" id="ID_TXT_HERO_SUB">Crowdsourced archive of verified "WMW" Stories.</p>
         </div>
-        <p class="hero-sub-text" id="ID_TEXT_HERO_FLOATING">See beyond the "WAVE"</p>
+        <p class="hero-sub-text" id="ID_TXT_HERO_FLOAT">See beyond the "WAVE"</p>
     </section>
 
     <div class="transition-area">
@@ -398,44 +398,44 @@
     </div>
 
     <main class="section-two">
-        <h2 id="ID_TEXT_DB_HEADER">Top WMW Stories!</h2>
+        <h2 id="ID_TXT_DB_HEADER">Top WMW Stories!</h2>
 
         <div class="jump-date-trigger" id="mainTrigger">
             <div class="dropdown-base" onclick="toggleMenu()">
-                <span id="ID_TEXT_DROP_BASE_LABEL">Jump to...</span>
-                <span id="ID_ICON_ARROW">&#9660;</span>
+                <span id="ID_TXT_DROP_LABEL">Jump to...</span>
+                <span>&#9660;</span>
             </div>
 
             <ul class="dropdown-menu">
-                <li class="dropdown-header" id="ID_TEXT_DROP_HEADER">Filter stories...</li>
-                <li class="dropdown-item" onclick="filterRelative('today')" id="ID_TEXT_OPT_TODAY">Today</li>
-                <li class="dropdown-item" onclick="filterRelative('week')" id="ID_TEXT_OPT_WEEK">Last week</li>
-                <li class="dropdown-item" onclick="filterRelative('month')" id="ID_TEXT_OPT_MONTH">Last month</li>
-                <li class="dropdown-item" onclick="filterRelative('beginning')" id="ID_TEXT_OPT_BEGIN">The very beginning</li>
-                <li class="dropdown-item special" onclick="openCalendar()" id="ID_TEXT_OPT_SPECIFIC">A specific date</li>
+                <li class="dropdown-header" id="ID_TXT_DROP_HEADER">Jump to...</li>
+                <li class="dropdown-item" onclick="filterRelative('today')" id="ID_TXT_OPT_TODAY">Today</li>
+                <li class="dropdown-item" onclick="filterRelative('week')" id="ID_TXT_OPT_WEEK">Last week</li>
+                <li class="dropdown-item" onclick="filterRelative('month')" id="ID_TXT_OPT_MONTH">Last month</li>
+                <li class="dropdown-item" onclick="filterRelative('beginning')" id="ID_TXT_OPT_BEGIN">The very beginning</li>
+                <li class="dropdown-item special" onclick="openCalendar()" id="ID_TXT_OPT_SPECIFIC">Jump to a specific date</li>
             </ul>
             <input type="date" id="jumpDate" style="position: absolute; visibility: hidden;" onchange="applySingleDateFilter()">
         </div>
 
         <div class="news-grid" id="card-container">
-            <p id="ID_TEXT_LOADER">Fetching latest stories...</p>
+            <p id="ID_TXT_LOADER">Fetching latest stories...</p>
         </div>
     </main>
 
     <section class="section-three">
         <div class="footer-column">
-            <h2 id="ID_TEXT_FOOT_L_TITLE">Submit to the Database</h2>
-            <p style="margin-bottom: 25px; opacity: 0.8;" id="ID_TEXT_FOOT_L_SUB">Have a verified story to share? Join the community archive.</p>
-            <a href="https://forms.gle/wdaE5ngCHGibMVdFA" target="_blank" class="footer-action-btn left-btn" id="ID_TEXT_FOOT_L_BTN">Contribute a Story</a>
+            <h2 id="ID_TXT_FOOT_L_TITLE">Submit to the Database</h2>
+            <p style="margin-bottom: 25px; opacity: 0.8;" id="ID_TXT_FOOT_L_DESC">Have a verified story to share? Join the community archive.</p>
+            <a href="https://forms.gle/wdaE5ngCHGibMVdFA" target="_blank" class="footer-action-btn left-btn" id="ID_TXT_FOOT_L_BTN">Contribute a Story</a>
         </div>
         <div class="footer-column">
-            <h2 id="ID_TEXT_FOOT_R_TITLE">Want to buy this <span class="strikethrough-footer" id="ID_TEXT_STRIKE">nation</span> domain?</h2>
-            <p style="margin-bottom: 25px; opacity: 0.8;" id="ID_TEXT_FOOT_R_SUB">Buy this domain and fund my education!</p>
-            <a href="mailto:contact@waahmodijiwaah.com" class="footer-action-btn right-btn" id="ID_TEXT_FOOT_R_BTN">Contact us</a>
+            <h2 id="ID_TXT_FOOT_R_TITLE">Want to buy this <span class="strikethrough-footer" id="ID_TXT_STRIKE">nation</span> domain?</h2>
+            <p style="margin-bottom: 25px; opacity: 0.8;" id="ID_TXT_FOOT_R_DESC">Buy this domain and fund my education!</p>
+            <a href="mailto:contact@waahmodijiwaah.com" class="footer-action-btn right-btn" id="ID_TXT_FOOT_R_BTN">Contact us</a>
         </div>
     </section>
 
-    <footer style="text-align: center; padding: 30px; background: #000; color: #444;font-weight: 700;" id="ID_TEXT_FOOT_CREDITS">मन से बनाया।</footer>
+    <footer style="text-align: center; padding: 30px; background: #000; color: #444;" id="ID_TXT_FOOT_CREDIT">मन से बनाया।</footer>
 
     <script>
         const SHEET_URL = "https://script.google.com/macros/s/AKfycbxtOK3DpcPcmaqgFUFnmpRVuwM9Gwx3yI6nG_ElldoSYojoA8VxDtAU6HhYcklrGKq-jQ/exec";
@@ -468,6 +468,7 @@
             toggleMenu();
         }
 
+        /* [ID: FILTER_RELATIVE_LOGIC] Handles time-based filtering */
         function filterRelative(type) {
             const now = new Date();
             now.setHours(0, 0, 0, 0);
@@ -477,7 +478,7 @@
 
             if (type === 'beginning') {
                 filteredData = [...allData].reverse();
-                document.getElementById('ID_TEXT_DROP_BASE_LABEL').innerText = "Beginning";
+                document.getElementById('ID_TXT_DROP_LABEL').innerText = "The very beginning";
             } else {
                 filteredData = allData.filter(item => {
                     const d = new Date(item.date);
@@ -486,9 +487,15 @@
                     if (type === 'month') return d >= new Date(now.setMonth(now.getMonth() - 1));
                     return true;
                 });
-                document.getElementById('ID_TEXT_DROP_BASE_LABEL').innerText = type.charAt(0).toUpperCase() + type.slice(1);
+                document.getElementById('ID_TXT_DROP_LABEL').innerText = type.charAt(0).toUpperCase() + type.slice(1);
             }
             renderBatch();
+        }
+
+        /* [ID: DATE_FORMAT_CLEANUP] Converts to DD.MM.YYYY */
+        function formatCardDate(dateString) {
+            const d = new Date(dateString);
+            return d.toLocaleDateString('en-GB').replace(/\//g, '.');
         }
 
         function applySingleDateFilter() {
@@ -497,7 +504,7 @@
             const target = new Date(val).toDateString();
             filteredData = allData.filter(item => new Date(item.date).toDateString() === target);
             currentIndex = 0;
-            document.getElementById('ID_TEXT_DROP_BASE_LABEL').innerText = val;
+            document.getElementById('ID_TXT_DROP_LABEL').innerText = val;
             document.getElementById('card-container').innerHTML = "";
             renderBatch();
         }
@@ -509,7 +516,16 @@
                 const card = document.createElement('article');
                 card.className = 'card';
                 let name = (item.credits.toString().toLowerCase() === 'yes') ? (item.contributor || "Anonymous") : "Anonymous";
-                card.innerHTML = `<span class="card-date">${item.date}</span><div><h3>${item.title}</h3><p>${item.story}</p></div><p class="contributor-name">~ ${name}</p>`;
+                const cleanDate = formatCardDate(item.date);
+
+                /* [ID: CARD_TEMPLATE_V3] Optimized with Ghost Overlay Date */
+                card.innerHTML = `
+                    <span class="card-date">${cleanDate}</span>
+                    <div>
+                        <h3>${item.title}</h3>
+                        <p>${item.story}</p>
+                    </div>
+                    <p class="contributor-name">~ ${name}</p>`;
                 container.appendChild(card);
             });
             currentIndex += CARDS_PER_PAGE;
