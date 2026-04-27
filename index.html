@@ -4,156 +4,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WaahModijiWaah</title>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <title>WaahModijiWaah | Crowdsourced Database</title>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZY1JZV1M7S"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
         gtag('js', new Date());
         gtag('config', 'G-ZY1JZV1M7S');
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400&family=Noto+Serif:wght@700&family=EB+Garamond:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;700&amp;family=Lora:ital,wght@0,400;0,700;1,400;1,600&amp;display=swap" rel="stylesheet">
+
     <style>
+        /* --- GLOBAL & VARIABLES [ID: GLOBAL_STYLE] --- */
         :root {
             --primary-orange: #FC6A03;
             --deep-green: #278D27;
-            --accent-brown: #A52A2A;
-            --text-dark: #333333;
-            --border-thickness: 50px;
+            --bg-black: #111111;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
-            font-family: 'DM Serif Display', display serif;
+            font-family: 'Lora', serif;
             overflow-x: hidden;
-            background: var(--primary-orange);
         }
 
-        .page-frame {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100vw; height: 100vh;
-            pointer-events: none;
-            z-index: 100;
-            border: var(--border-thickness) solid transparent;
-            border-image-source: url('border.jpg');
-            border-image-slice: 100;
-            border-image-repeat: round;
-            mix-blend-mode: multiply;
-        }
-
-        /* --- SECTION 1 --- */
+        /* --- HERO SECTION [ID: HERO_CONTAINER] --- */
         .section-one {
-            position: relative;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            padding-top: 30vh;
-            overflow: hidden;
-        }
-
-        .parallax-bg {
-            position: absolute;
-            top: -30%; left: 0;
-            width: 100%; height: 160%;
-            background-color: var(--primary-orange);
-            background-image:
-                radial-gradient(ellipse at 20% 50%, rgba(255,255,255,0.08) 0%, transparent 60%),
-                radial-gradient(ellipse at 80% 20%, rgba(39,141,39,0.12) 0%, transparent 50%);
-            will-change: transform;
-            z-index: 0;
-        }
-
-        .container {
-            text-align: center;
-            width: 85%;
-            max-width: 900px;
-            padding: 20px;
-            z-index: 10;
-            position: relative;
-        }
-
-        .hindi-text {
-            font-family: 'Rozha One', Display-serif;
-            font-size: 25px;
-            color: var(--text-dark);
-            margin-bottom: 5px;
-            display: inline-block;
-            border-bottom: 1px solid rgba(0,0,0,0.5);
-        }
-
-        .main-headline {
-            color: var(--deep-green);
-            font-size: clamp(34px, 7vw, 64px);
-            font-weight: 700;
-            margin: 20px 0;
-            line-height: 1.15;
-        }
-
-        .crossed-out { color: var(--accent-brown); text-decoration: line-through; }
-
-        .sub-text {
-            font-family: 'EB Garamond', serif;
-            font-style: italic;
-            font-weight: 600;
-            font-size: clamp(18px, 3.5vw, 24px);
-            color: var(--text-dark);
-            margin: 30px 0;
-        }
-
-        .email-link { color: var(--deep-green); text-decoration: none; }
-        .email-link:hover { text-decoration: underline; }
-
-        /* --- SCROLL INDICATOR --- */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px; left: 50%;
-            transform: translateX(-50%);
-            z-index: 10;
+            height: calc(100vh - 200px);
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
             align-items: center;
-            gap: 8px;
-            opacity: 0.6;
-            animation: bounce 2s infinite;
+            text-align: center;
+            background-color: var(--primary-orange);
+            padding: 20px;
         }
 
-        .scroll-indicator span {
-            font-family: 'EB Garamond', serif;
+        .top-spacer {
+            width: 100%;
+            height: 60px;
+        }
+
+        .hindi-welcome {
+            font-family: 'Noto Sans Devanagari';
+            font-size: 26px;
+            color: white;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            display: inline-block;
+            border-bottom: 2px solid white;
+        }
+
+        .section-one h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            color: white;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 10px;
+        }
+
+        .main-desc {
+            font-size: 1.3rem;
             font-style: italic;
-            font-size: 14px;
-            color: var(--text-dark);
+            color: white;
+            max-width: 750px;
+            margin: 0 auto;
         }
 
-        .scroll-arrow {
-            width: 20px; height: 20px;
-            border-right: 2px solid var(--text-dark);
-            border-bottom: 2px solid var(--text-dark);
-            transform: rotate(45deg);
+        /* Floating Sub-text [ID: VERIFIED_SUBTEXT] */
+        .hero-sub-text {
+            font-size: 1.15rem;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 30px;
+            letter-spacing: 0.5px;
+            animation: float 3s ease-in-out infinite;
         }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50%       { transform: translateX(-50%) translateY(8px); }
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
-        /* --- SVG WAVE TRANSITION --- */
-        /*
-         * The transition area sits on top of the orange section background.
-         * The SVG has 7 wave layers sharing one <path> definition, animated
-         * purely via CSS translateX — no JavaScript, no canvas.
-         * Colours interpolate linearly from #FC6A03 (orange) to #278D27 (green)
-         * across 7 steps: each layer is offset by y+2 so they stack vertically,
-         * giving the illusion of depth as faster/slower layers scroll past each other.
-         */
-        .wave-transition {
+        /* --- WAVE SYSTEM [ID: WAVE_SYSTEM] --- */
+        .transition-area {
             position: relative;
-            background-color: var(--primary-orange); /* same as section-one */
-            height: 220px;
+            background-color: var(--primary-orange);
+            height: 200px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
@@ -163,210 +121,381 @@
 
         .waves {
             width: 100%;
-            height: 180px;
+            height: 150px;
             display: block;
         }
 
-        .parallax > use {
-            animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite;
+        .parallax>use {
+            animation: move-forever 25s cubic-bezier(.55, .5, .45, .5) infinite;
         }
 
-        /* Each layer gets a distinct speed + delay = parallax depth illusion */
-        .parallax > use:nth-child(1) { animation-delay: -2s;  animation-duration: 7s;  opacity: 0.30; }
-        .parallax > use:nth-child(2) { animation-delay: -3s;  animation-duration: 10s; opacity: 0.50; }
-        .parallax > use:nth-child(3) { animation-delay: -4s;  animation-duration: 13s; opacity: 0.45; }
-        .parallax > use:nth-child(4) { animation-delay: -5s;  animation-duration: 16s; opacity: 0.60; }
-        .parallax > use:nth-child(5) { animation-delay: -6s;  animation-duration: 19s; opacity: 0.75; }
-        .parallax > use:nth-child(6) { animation-delay: -7s;  animation-duration: 22s; opacity: 0.88; }
-        .parallax > use:nth-child(7) { animation-delay: -8s;  animation-duration: 25s; opacity: 1.00; }
+        .parallax>use:nth-child(1) {
+            animation-delay: -2s;
+            animation-duration: 7s;
+            opacity: 0.3;
+        }
+
+        .parallax>use:nth-child(2) {
+            animation-delay: -3s;
+            animation-duration: 10s;
+            opacity: 0.5;
+        }
+
+        .parallax>use:nth-child(3) {
+            animation-delay: -4s;
+            animation-duration: 13s;
+            opacity: 0.4;
+        }
+
+        .parallax>use:nth-child(4) {
+            animation-delay: -5s;
+            animation-duration: 16s;
+            opacity: 0.6;
+        }
+
+        .parallax>use:nth-child(5) {
+            animation-delay: -6s;
+            animation-duration: 19s;
+            opacity: 0.8;
+        }
+
+        .parallax>use:nth-child(6) {
+            animation-delay: -7s;
+            animation-duration: 22s;
+            opacity: 0.9;
+        }
+
+        .parallax>use:nth-child(7) {
+            animation-delay: -8s;
+            animation-duration: 25s;
+        }
 
         @keyframes move-forever {
-            0%   { transform: translate3d(-90px, 0, 0); }
-            100% { transform: translate3d(85px,  0, 0); }
+            0% {
+                transform: translate3d(-90px, 0, 0);
+            }
+
+            100% {
+                transform: translate3d(85px, 0, 0);
+            }
         }
 
-        /* --- SECTION 2 --- */
+        /* --- DATABASE CARDS [ID: DB_SECTION] --- */
         .section-two {
+            min-height: auto;
+            background-color: var(--deep-green);
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: -1px;
             position: relative;
-            min-height: 100vh;
+            z-index: 2;
+        }
+
+        .section-two h2 {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            border-top: 5px solid var(--primary-orange);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .card p {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .contributor-name {
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: auto;
+            padding-top: 10px;
+            font-style: italic;
+        }
+
+        .pagination-container {
+            grid-column: 1 / -1;
             display: flex;
             justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            background-color: var(--deep-green);
-            margin-top: -1px;
+            gap: 15px;
+            padding: 20px 0;
         }
 
-        .section-two-bg {
-            position: absolute;
-            top: -30%; left: 0;
-            width: 100%; height: 160%;
-            background-image:
-                radial-gradient(ellipse at 80% 50%, rgba(252,106,3,0.1) 0%, transparent 60%),
-                radial-gradient(ellipse at 20% 80%, rgba(255,255,255,0.04) 0%, transparent 50%);
-            will-change: transform;
-            z-index: 0;
-        }
-
-        .section-two-content {
-            text-align: center;
-            width: 85%;
-            max-width: 900px;
-            padding: 20px;
-            z-index: 10;
-            position: relative;
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.9s ease, transform 0.9s ease;
-        }
-
-        .section-two-content.visible { opacity: 1; transform: translateY(0); }
-
-        .edu-label {
-            font-family: 'Rozha One', display-serif;
-            font-size: 20px;
-            color: rgba(255,255,255,0.6);
-            margin-bottom: 30px;
-            display: inline-block;
-            border-bottom: 1px solid rgba(255,255,255,0.5);
-            padding-bottom: 5px;
-        }
-
-        .edu-headline {
-            font-family: 'EB Garamond', serif;
-            font-style: italic;
-            font-size: clamp(28px, 6vw, 72px);
-            color: #ffffff;
-            line-height: 1.2;
-            margin-bottom: 40px;
-        }
-
-        .edu-headline em { color: var(--primary-orange); font-style: italic; }
-
-        .edu-sub {
-            font-family: 'EB Garamond', serif;
-            font-style: italic;
+        .view-btn {
+            background-color: transparent;
+            color: white;
+            border: 1.5px solid white;
+            padding: 8px 25px;
+            font-family: 'Lora', serif;
+            font-size: 0.95rem;
             font-weight: 600;
-            font-size: clamp(16px, 3vw, 22px);
-            color: rgba(255,255,255,0.75);
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.7;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
 
-        .edu-sub a:hover { color: var(--primary-orange) !important; transition: color 0.3s ease; }
+        .view-btn:hover {
+            background-color: white;
+            color: var(--deep-green);
+            transform: translateY(-2px);
+        }
 
-        @media (max-width: 600px) {
-            :root { --border-thickness: 25px; }
-            .main-headline   { font-size: 36px; }
-            .hindi-text      { font-size: 24px; }
-            .edu-headline    { font-size: 32px; }
-            .wave-transition { height: 160px; }
-            .waves           { height: 130px; }
+        /* --- DUAL FOOTER STYLE [ID: DUAL_FOOTER_ALIGN] --- */
+        .section-three {
+            background-color: var(--bg-black);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 60px 80px;
+            color: white;
+        }
+
+        .footer-column {
+            flex: 1;
+            max-width: 45%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Center column contents */
+        .footer-column.left,
+        .footer-column.right {
+            align-items: center;
+            text-align: center;
+        }
+
+        .section-three h2 {
+            font-family: 'Lora', serif;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .footer-action-btn {
+            display: inline-flex;
+            /* Use flex for better internal alignment */
+            justify-content: center;
+            /* Center text inside the button */
+            align-items: center;
+            /* Center text vertically */
+
+            /* --- The Size Fix --- */
+            min-width: 240px;
+            /* Increased to fit "Contribute a Story" comfortably */
+            height: 52px;
+            /* Fixed height for vertical symmetry */
+            padding: 0 30px;
+            /* Horizontal padding only */
+
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: 0.3s;
+            font-family: 'Lora', serif;
+            font-size: 1rem;
+            box-sizing: border-box;
+            /* Ensures padding doesn't break the width */
+        }
+
+        .left-btn {
+            background: var(--primary-orange);
+            color: white;
+            border: none;
+        }
+
+        .right-btn {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .footer-action-btn:hover {
+            background: white;
+            color: var(--primary-orange);
+            transform: scale(1.05);
+        }
+
+        .strikethrough-footer {
+            text-decoration: line-through;
+            text-decoration-thickness: 2px;
+            /* Made slightly thicker for better visibility */
+            color: var(--primary-orange);
+            /* Changed from white to orange */
+            opacity: 1;
+            /* Removed opacity to make the orange vivid */
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #000;
+            color: #444;
+            font-size: 0.85rem;
+            border-top: 1px solid #222;
+        }
+
+        @media (max-width: 768px) {
+            .section-three {
+                flex-direction: column;
+                align-items: center;
+                padding: 40px 20px;
+                gap: 40px;
+            }
+
+            .footer-column {
+                max-width: 100%;
+            }
         }
     </style>
 </head>
 
 <body>
-
-    <div class="page-frame"></div>
-
-    <!-- SECTION 1 -->
     <section class="section-one">
-        <div class="parallax-bg" id="parallax-bg-1"></div>
-
-        <div class="container">
-            <div class="hindi-text">भाइयों और बहनों</div>
-            <div class="main-headline">
-                Want to buy<br>
-                this <span class="crossed-out">nation</span> domain?
-            </div>
-            <div class="sub-text">
-                Yes, this could be yours.<br>The domain, not the nation.
-            </div>
+        <div class="top-spacer"></div>
+        <div class="main-hero-content">
+            <div class="hindi-welcome">भाइयों और बहनों</div>
+            <h1>Waah Modiji Waah</h1>
+            <p class="main-desc">Crowdsourced archive of verified "WMW" Stories.</p>
         </div>
-
-        <div class="scroll-indicator">
-            <span>scroll</span>
-            <div class="scroll-arrow"></div>
-        </div>
+        <p class="hero-sub-text">See beyond the "WAVE"</p>
     </section>
 
-    <!--
-        SVG WAVE TRANSITION
-        ───────────────────
-        One reusable <path id="gentle-wave"> drawn 7 times via <use>,
-        each shifted down by y+2 units and filled with a colour stop
-        interpolated from orange (#FC6A03) to green (#278D27).
-        Animation is pure CSS translateX at different speeds → parallax depth.
-        No canvas, no requestAnimationFrame.
-    -->
-    <div class="wave-transition">
-        <svg class="waves"
-             xmlns="http://www.w3.org/2000/svg"
-             viewBox="0 24 150 28"
-             preserveAspectRatio="none"
-             shape-rendering="auto">
+    <div class="transition-area">
+        <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
             <defs>
-                <path id="gentle-wave"
-                      d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
             </defs>
             <g class="parallax">
-                <!-- 7 colour stops: orange → green, y offset increases by 2 each step -->
-                <use href="#gentle-wave" x="48" y="0"  fill="#CE720B" />
-                <use href="#gentle-wave" x="48" y="2"  fill="#B07610" />
-                <use href="#gentle-wave" x="48" y="4"  fill="#927C15" />
-                <use href="#gentle-wave" x="48" y="6"  fill="#73801A" />
-                <use href="#gentle-wave" x="48" y="8"  fill="#55861F" />
+                <use href="#gentle-wave" x="48" y="0" fill="#CE720B" />
+                <use href="#gentle-wave" x="48" y="2" fill="#B07610" />
+                <use href="#gentle-wave" x="48" y="4" fill="#927C15" />
+                <use href="#gentle-wave" x="48" y="6" fill="#73801A" />
+                <use href="#gentle-wave" x="48" y="8" fill="#55861F" />
                 <use href="#gentle-wave" x="48" y="10" fill="#368A24" />
                 <use href="#gentle-wave" x="48" y="12" fill="#278D27" />
             </g>
         </svg>
     </div>
 
-    <!-- SECTION 2 -->
-    <section class="section-two">
-        <div class="section-two-bg" id="parallax-bg-2"></div>
+    <main class="section-two">
+        <h2>Top WMW Stories!</h2>
+        <div class="news-grid" id="card-container">
+            <p style="color: white; grid-column: 1/-1; text-align: center;">Fetching latest stories...</p>
+        </div>
+    </main>
 
-        <div class="section-two-content" id="section-two-content">
-            <br><br><br><br><br><br><br>
-            <div class="edu-label">एक कारण और भी है</div>
-            <div class="edu-headline">
-                Something's coming up<br><em>soon!</em>
-            </div>
-            <div class="edu-sub">
-                <br><br><br><br>
-                Meanwhile, you can buy this domain and fund my education!
-            </div>
-            <div class="edu-sub" style="margin-top: 0;">
-                Email to: <a href="mailto:contact@waahmodijiwaah.com"
-                             style="color: rgba(255,255,255,0.75); text-decoration: none;">
-                    contact@waahmodijiwaah.com
-                </a>
-            </div>
+    <section class="section-three">
+        <div class="footer-column left">
+            <h2>Submit to the Database</h2>
+            <p style="margin-bottom: 25px; opacity: 0.8;">Have a verified story to share? Join the community archive.</p>
+            <a href="https://forms.gle/wdaE5ngCHGibMVdFA" target="_blank" class="footer-action-btn left-btn">
+                Contribute a Story
+            </a>
+        </div>
+
+        <div class="footer-column right">
+            <h2>Want to buy this <span class="strikethrough-footer">nation</span> domain?</h2>
+            <p style="margin-bottom: 25px; opacity: 0.8;">Buy this domain and fund my education!</p>
+            <a href="mailto:contact@waahmodijiwaah.com" class="footer-action-btn right-btn">Contact us</a>
         </div>
     </section>
 
+    <footer>मन से बनाया।</footer>
+
     <script>
-        // --- Parallax backgrounds ---
-        const bg1 = document.getElementById('parallax-bg-1');
-        const bg2 = document.getElementById('parallax-bg-2');
+        const SHEET_URL = "https://script.google.com/macros/s/AKfycbxtOK3DpcPcmaqgFUFnmpRVuwM9Gwx3yI6nG_ElldoSYojoA8VxDtAU6HhYcklrGKq-jQ/exec";
+        let allData = [];
+        let currentIndex = 0;
+        const CARDS_PER_PAGE = 9;
 
-        window.addEventListener('scroll', () => {
-            const scrollY = window.scrollY;
-            bg1.style.transform = `translateY(${scrollY * 0.4}px)`;
-            bg2.style.transform = `translateY(${scrollY * 0.2}px)`;
-        }, { passive: true });
+        async function loadCards() {
+            const container = document.getElementById('card-container');
+            try {
+                const response = await fetch(SHEET_URL, {
+                    redirect: "follow"
+                });
+                allData = await response.json();
+                allData.reverse();
+                container.innerHTML = "";
+                renderBatch();
+            } catch (error) {
+                container.innerHTML = `<p style="color: white; grid-column: 1/-1; text-align: center;">Database unavailable.</p>`;
+            }
+        }
 
-        // --- Fade-in section 2 on scroll into view ---
-        const content  = document.getElementById('section-two-content');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) content.classList.add('visible');
+        function showLess() {
+            currentIndex = 0;
+            const container = document.getElementById('card-container');
+            container.innerHTML = "";
+            renderBatch();
+            document.querySelector('.section-two').scrollIntoView({
+                behavior: 'smooth'
             });
-        }, { threshold: 0.2 });
-        observer.observe(content);
-    </script>
+        }
 
+        function renderBatch() {
+            const container = document.getElementById('card-container');
+            const existingBtn = document.querySelector('.pagination-container');
+            if (existingBtn) existingBtn.remove();
+
+            const nextBatch = allData.slice(currentIndex, currentIndex + CARDS_PER_PAGE);
+
+            nextBatch.forEach(item => {
+                if (item.title) {
+                    const card = document.createElement('article');
+                    card.className = 'card';
+                    let displayName = (item.credits && item.credits.toString().toLowerCase().trim() === 'yes') ? (item.contributor || "Anonymous") : "Anonymous";
+                    let rawLink = item.link ? item.link.toString().trim() : "";
+                    if (rawLink && !rawLink.startsWith('http')) {
+                        rawLink = `https://${rawLink}`;
+                    }
+
+                    const sourceButton = rawLink ? `<div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee; text-align: center;"><a href="${rawLink}" target="_blank" class="source-btn">Check Source</a></div>` : '';
+
+                    card.innerHTML = `<h3>${item.title}</h3><p>${item.story || ""}</p><p class="contributor-name">~ ${displayName}</p>${sourceButton}`;
+                    container.appendChild(card);
+                }
+            });
+
+            currentIndex += CARDS_PER_PAGE;
+            const btnContainer = document.createElement('div');
+            btnContainer.className = 'pagination-container';
+            let buttonsHTML = "";
+            if (currentIndex < allData.length) buttonsHTML += `<button class="view-btn" onclick="renderBatch()">View More</button>`;
+            if (currentIndex > CARDS_PER_PAGE) buttonsHTML += `<button class="view-btn" onclick="showLess()">View Less</button>`;
+            if (buttonsHTML !== "") {
+                btnContainer.innerHTML = buttonsHTML;
+                container.appendChild(btnContainer);
+            }
+        }
+        window.addEventListener('DOMContentLoaded', loadCards);
+    </script>
 </body>
+
 </html>
